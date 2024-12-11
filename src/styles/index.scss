@@ -1,78 +1,80 @@
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 1rem;
-  margin: 0;
-}
+@layer base {
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    margin: 0;
+  }
 
-.main-content {
-  padding: 1rem;
-}
+  .main-content {
+    padding: 1rem;
+  }
 
-.main-navigation {
-  background-color: #ccc;
-  display: flex;
-  gap: 12px;
-  padding: 1rem;
+  .main-navigation {
+    background-color: #ccc;
+    display: flex;
+    gap: 12px;
+    padding: 1rem;
 
-  &__item {
-    background-color: #efefef;
-    border: none;
-    border-radius: 0.25rem;
-    color: #333;
-    padding: 0.5em 1em;
-    text-decoration: none;
+    &__item {
+      background-color: #efefef;
+      border: none;
+      border-radius: 0.25rem;
+      color: #333;
+      padding: 0.5em 1em;
+      text-decoration: none;
 
-    &:hover {
-      background-color: #333;
-      color: #fff;
+      &:hover {
+        background-color: #333;
+        color: #fff;
+      }
     }
   }
-}
 
-select,
-input {
-  border-radius: 0.25em;
-  padding: 0.5em 0.75rem;
-  font-size: 16px;
-  border: 1px solid #ccc;
-}
-
-h2:not(:first-of-type) {
-  margin-top: 5rem;
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
-
-.form {
-  display: flex;
-  flex-direction: column;
-  gap: 1em;
-  max-width: 20em;
-  margin: 0 auto;
-
-  &__label {
-    display: flex;
-    justify-content: flex-start;
+  select,
+  input {
+    border-radius: 0.25em;
+    padding: 0.5em 0.75rem;
+    font-size: 16px;
+    border: 1px solid #ccc;
   }
 
-  &__input-wrapper {
+  h2:not(:first-of-type) {
+    margin-top: 5rem;
+  }
+
+  .card {
+    padding: 2em;
+  }
+
+  .read-the-docs {
+    color: #888;
+  }
+
+  .form {
     display: flex;
     flex-direction: column;
-    gap: 0.25em;
-    justify-content: flex-start;
-  }
+    gap: 1em;
+    max-width: 20em;
+    margin: 0 auto;
 
-  &__input {
-    &--error {
+    &__label {
       display: flex;
-      justify-content: flex-end;
-      color: red;
+      justify-content: flex-start;
+    }
+
+    &__input-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25em;
+      justify-content: flex-start;
+    }
+
+    &__input {
+      &--error {
+        display: flex;
+        justify-content: flex-end;
+        color: red;
+      }
     }
   }
 }
