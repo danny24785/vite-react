@@ -1,6 +1,5 @@
-import { createLazyFileRoute, FileRoutesByPath } from '@tanstack/react-router'
-import { useForm, SubmitHandler } from 'react-hook-form'
-import './home/home.css'
+import { createLazyFileRoute, FileRoutesByPath } from '@tanstack/react-router';
+import { useForm, SubmitHandler } from 'react-hook-form';
 
 enum GenderEnum {
   female = 'female',
