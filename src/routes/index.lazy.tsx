@@ -1,20 +1,20 @@
-import { createLazyFileRoute } from '@tanstack/react-router'
-import { useForm, SubmitHandler } from "react-hook-form";
-import './home.css';
+import { createLazyFileRoute, FileRoutesByPath } from '@tanstack/react-router'
+import { useForm, SubmitHandler } from 'react-hook-form'
+import './home/home.css'
 
 enum GenderEnum {
-  female = "female",
-  male = "male",
-  other = "other",
+  female = 'female',
+  male = 'male',
+  other = 'other',
 }
 
 type BasicInputs = {
-  example: string;
-  exampleRequired: string;
-  gender: GenderEnum;
+  example: string
+  exampleRequired: string
+  gender: GenderEnum
 }
 
-export const Route = createLazyFileRoute('/')({
+export const Route = createLazyFileRoute('/' as keyof FileRoutesByPath)({
   component: Index,
 })
 
@@ -23,8 +23,8 @@ function Index() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<BasicInputs>();
-  const onSubmit: SubmitHandler<BasicInputs> = (data) => console.log(data);
+  } = useForm<BasicInputs>()
+  const onSubmit: SubmitHandler<BasicInputs> = (data) => console.log(data)
 
   return (
     <>
@@ -33,27 +33,41 @@ function Index() {
       <form onSubmit={handleSubmit(onSubmit)} className="form">
         <div className="form__input-wrapper">
           <label className="form__label">First name: </label>
-          <input defaultValue="test" {...register("example", { maxLength: 20 })} className="form__input" />
+          <input
+            defaultValue="test"
+            {...register('example', { maxLength: 20 })}
+            className="form__input"
+          />
 
-          {errors.example && <span className="form__input--error">max 20 characters</span>}
+          {errors.example && (
+            <span className="form__input--error">max 20 characters</span>
+          )}
         </div>
 
         <div className="form__input-wrapper">
           <label className="form__label">Last name: </label>
-          <input {...register("exampleRequired", { required: true })} className="form__input" />
+          <input
+            {...register('exampleRequired', { required: true })}
+            className="form__input"
+          />
 
-          {errors.exampleRequired && <span className="form__input--error">This field is required</span>}
+          {errors.exampleRequired && (
+            <span className="form__input--error">This field is required</span>
+          )}
         </div>
 
         <div className="form__input-wrapper">
-          <select {...register("gender", { required: true })}>
+          <select {...register('gender', { required: true })}>
             <option value="female">female</option>
             <option value="male">male</option>
             <option value="other">other</option>
           </select>
         </div>
 
-        <input type="submit" disabled={Boolean(errors.example) || Boolean(errors.exampleRequired)} />
+        <input
+          type="submit"
+          disabled={Boolean(errors.example) || Boolean(errors.exampleRequired)}
+        />
       </form>
     </>
   )
