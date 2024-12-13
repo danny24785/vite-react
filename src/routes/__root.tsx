@@ -1,17 +1,24 @@
-import { createRootRoute, Link, Outlet } from '@tanstack/react-router';
+import { createRootRoute, Outlet } from '@tanstack/react-router';
 import { TanStackRouterDevtools } from '@tanstack/router-devtools';
+import Navigation from '../components/navigation/Navigation';
+import NavigationItem from '../components/navigation/NavigationItem/NavigationItem';
 
 export const Route = createRootRoute({
   component: () => (
     <>
-      <div className="main-navigation">
-        <Link to="/" className="main-navigation__item">
+      <Navigation>
+        <NavigationItem to="/">
           Home
-        </Link>{' '}
-        <Link to="/about" className="main-navigation__item">
+        </NavigationItem>
+
+        <NavigationItem to="/about">
           About
-        </Link>
-      </div>
+        </NavigationItem>
+
+        <NavigationItem to="/existing-form">
+          Existing Form
+        </NavigationItem>
+      </Navigation>
       
       <main className="main-content">
         <Outlet />

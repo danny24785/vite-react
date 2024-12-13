@@ -3,6 +3,8 @@ import { useForm, SubmitHandler } from 'react-hook-form'
 import FormInputContainer from '../components/form/FormInputContainer/FormInputContainer'
 import FormLabel from '../components/form/FormLabel/FormLabel'
 import FormErrorMessage from '../components/form/FormErrorMessage/FormErrorMessage'
+import Heading from '../components/Heading/Heading'
+import { HeadingLevel } from '../types/enums/HeadingLevel.enum'
 
 enum GenderEnum {
   female = 'female',
@@ -30,7 +32,7 @@ function Index() {
 
   return (
     <>
-      <h1 className="max-w-[300px] mx-auto text-3xl mb-4 flex justify-center w-full">React form hook</h1>
+      <Heading headingLevel={HeadingLevel.h1}>React form hook</Heading>
 
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4 max-w-[300px] mx-auto">
         <FormInputContainer>
