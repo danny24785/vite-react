@@ -13,6 +13,7 @@
 import { Route as rootRoute } from './routes/__root'
 import { Route as ExistingFormImport } from './routes/existing-form'
 import { Route as AboutImport } from './routes/about'
+import { Route as ControllerImport } from './routes/Controller'
 import { Route as IndexImport } from './routes/index'
 
 // Create/Update Routes
@@ -26,6 +27,12 @@ const ExistingFormRoute = ExistingFormImport.update({
 const AboutRoute = AboutImport.update({
   id: '/about',
   path: '/about',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const ControllerRoute = ControllerImport.update({
+  id: '/Controller',
+  path: '/Controller',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -44,6 +51,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/Controller': {
+      id: '/Controller'
+      path: '/Controller'
+      fullPath: '/Controller'
+      preLoaderRoute: typeof ControllerImport
       parentRoute: typeof rootRoute
     }
     '/about': {
@@ -67,12 +81,14 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/Controller': typeof ControllerRoute
   '/about': typeof AboutRoute
   '/existing-form': typeof ExistingFormRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/Controller': typeof ControllerRoute
   '/about': typeof AboutRoute
   '/existing-form': typeof ExistingFormRoute
 }
@@ -80,27 +96,30 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
+  '/Controller': typeof ControllerRoute
   '/about': typeof AboutRoute
   '/existing-form': typeof ExistingFormRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/existing-form'
+  fullPaths: '/' | '/Controller' | '/about' | '/existing-form'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/existing-form'
-  id: '__root__' | '/' | '/about' | '/existing-form'
+  to: '/' | '/Controller' | '/about' | '/existing-form'
+  id: '__root__' | '/' | '/Controller' | '/about' | '/existing-form'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ControllerRoute: typeof ControllerRoute
   AboutRoute: typeof AboutRoute
   ExistingFormRoute: typeof ExistingFormRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ControllerRoute: ControllerRoute,
   AboutRoute: AboutRoute,
   ExistingFormRoute: ExistingFormRoute,
 }
@@ -116,12 +135,16 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
+        "/Controller",
         "/about",
         "/existing-form"
       ]
     },
     "/": {
       "filePath": "index.tsx"
+    },
+    "/Controller": {
+      "filePath": "Controller.tsx"
     },
     "/about": {
       "filePath": "about.tsx"

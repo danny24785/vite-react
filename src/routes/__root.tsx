@@ -18,6 +18,10 @@ export const Route = createRootRoute({
         <NavigationItem to="/existing-form">
           Existing Form
         </NavigationItem>
+
+        <NavigationItem to="/controller">
+          Controller
+        </NavigationItem>
       </Navigation>
       
       <main className="main-content">
